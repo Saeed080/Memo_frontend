@@ -1,0 +1,185 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  background: #f3f4f6;
+  color: #383838;
+  font-family: "Inter", sans-serif;
+}
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 56px;
+  height: 28px;
+}
+
+/* Hide default HTML checkbox */
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+/* The slider */
+.slider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #f1f1f1;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+.slider:before {
+  position: absolute;
+  content: "";
+  height: 20px;
+  width: 20px;
+  left: 4px;
+  bottom: 4px;
+  background-color: #ccc;
+  -webkit-transition: 0.4s;
+  transition: 0.4s;
+}
+
+input:checked + .slider {
+  background-color: #2196f3;
+}
+
+input:focus + .slider {
+  box-shadow: 0 0 1px #2196f3;
+}
+
+input:checked + .slider:before {
+  -webkit-transform: translateX(26px);
+  -ms-transform: translateX(26px);
+  transform: translateX(26px);
+}
+
+/* Rounded sliders */
+.slider.round {
+  border-radius: 34px;
+}
+
+.slider.round:before {
+  border-radius: 50%;
+}
+
+.shadow-lg {
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.rounded-lg {
+  border-radius: 12px;
+}
+
+/* ==== */
+/* Container for the microphone and bubble effect */
+.mike-container {
+  position: relative; /* Position relative for the bubble effect */
+  display: inline-flex; /* Align items inline */
+  align-items: center; /* Center items vertically */
+}
+
+/* Microphone image styles */
+.mike-icon {
+  z-index: 2; /* Place icon above the bubble */
+}
+
+/* Bubble effect styles */
+.bubble {
+  margin-left: -9px;
+  position: absolute; /* Position absolutely to the container */
+  background-color: rgba(0, 128, 255, 0.3); /* Light blue color */
+  border-radius: 50%; /* Make it round */
+  width: 40px; /* Set bubble size */
+  height: 40px; /* Set bubble size */
+  animation: bubble 1s infinite; /* Bubble animation */
+  z-index: 1; /* Place bubble below the icon */
+  transform: scale(0); /* Initially hidden */
+  transition: transform 0.3s ease-in-out; /* Smooth transition */
+}
+
+/* Animation keyframes */
+@keyframes bubble {
+  0% {
+    transform: scale(0);
+  }
+  50% {
+    transform: scale(1.2); /* Scale up */
+  }
+  100% {
+    transform: scale(0); /* Scale down */
+  }
+}
+
+/* Class to activate the bubble */
+.bubble-active {
+  transform: scale(1); /* Show bubble when active */
+}
+
+/* Shimmer Animation */
+@keyframes shimmer {
+  0% {
+    background-position: -500px 0;
+  }
+  100% {
+    background-position: 500px 0;
+  }
+}
+
+.shimmer {
+  position: relative;
+  overflow: hidden;
+  background-color: #f6f7f8;
+}
+
+.shimmer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: -500px;
+  height: 100%;
+  width: 500px;
+  background: linear-gradient(
+    to right,
+    rgba(246, 247, 248, 0) 0%,
+    rgba(255, 255, 255, 0.8) 50%,
+    rgba(246, 247, 248, 0) 100%
+  );
+  animation: shimmer 2s infinite;
+}
+
+.shimmer-element {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-element::after {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  background: inherit;
+  animation: shimmer 2s infinite;
+  opacity: 0.7;
+}
+
+/* === */
+.diary-entry-btn {
+  cursor: pointer;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+.diary-entry-btn:hover {
+  color: blue;
+  text-decoration: underline;
+}
